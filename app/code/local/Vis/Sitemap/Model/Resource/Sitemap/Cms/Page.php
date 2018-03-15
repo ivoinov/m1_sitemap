@@ -39,6 +39,7 @@ class Vis_Sitemap_Model_Resource_Sitemap_Cms_Page extends Mage_Sitemap_Model_Res
                 'main_table.page_id=store_table.page_id',
                 array()
             )
+            ->where(sprintf('main_table.%s = ? ', Vis_Sitemap_Helper_Data::IS_INCLUDE_IN_SITEMAP), 1)
             ->where('main_table.is_active=1')
             ->where('store_table.store_id IN(?)', array(0, $storeId));
         $query = $this->_getWriteAdapter()->query($select);
